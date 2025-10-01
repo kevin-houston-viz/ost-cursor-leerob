@@ -1,0 +1,56 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build outputs
+dist/
+build/
+.angular/
+.next/
+out/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Testing
+coverage/
+.nyc_output/
+playwright-report/
+test-results/
+*.log
+
+# Database
+*.sqlite
+*.db
+postgres_data/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Angular specific
+.angular/cache/
+
+# Playwright
+playwright/.cache/
+

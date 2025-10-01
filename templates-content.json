@@ -1,0 +1,261 @@
+{
+  "templates": [
+    {
+      "id": "retention-template",
+      "name": "Increase User Retention",
+      "description": "A template for improving user retention rates",
+      "category": "retention",
+      "structure": {
+        "outcome": {
+          "title": "Increase 30-Day User Retention by 20%",
+          "description": "Improve the percentage of users who return to the product within 30 days of signup",
+          "opportunities": [
+            {
+              "title": "Users don't understand core value",
+              "description": "New users struggle to see how the product solves their problem",
+              "solutions": [
+                {
+                  "title": "Improve onboarding flow",
+                  "description": "Create guided tour showing key features and use cases",
+                  "experiments": [
+                    {
+                      "title": "A/B test interactive tutorial",
+                      "description": "Test interactive tutorial vs. passive walkthrough"
+                    }
+                  ]
+                },
+                {
+                  "title": "Add use case templates",
+                  "description": "Pre-built templates for common scenarios",
+                  "experiments": [
+                    {
+                      "title": "User interview on template needs",
+                      "description": "Interview 10 users about their common use cases"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Missing key features users expect",
+              "description": "Users expect functionality that isn't available",
+              "solutions": [
+                {
+                  "title": "Feature gap analysis",
+                  "description": "Identify most requested missing features",
+                  "experiments": [
+                    {
+                      "title": "Survey churned users",
+                      "description": "Ask users who stopped using about missing features"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Low engagement after initial use",
+              "description": "Users don't return after first session",
+              "solutions": [
+                {
+                  "title": "Email re-engagement campaign",
+                  "description": "Send targeted emails with tips and new features",
+                  "experiments": [
+                    {
+                      "title": "Test email frequency",
+                      "description": "Compare daily vs weekly vs triggered emails"
+                    }
+                  ]
+                },
+                {
+                  "title": "In-app notifications",
+                  "description": "Notify users of relevant activity and updates",
+                  "experiments": [
+                    {
+                      "title": "Prototype notification system",
+                      "description": "Build simple notification prototype and test with beta users"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "engagement-template",
+      "name": "Improve User Engagement",
+      "description": "A template for increasing user engagement and activity",
+      "category": "engagement",
+      "structure": {
+        "outcome": {
+          "title": "Increase Weekly Active Users by 30%",
+          "description": "Grow the number of users who engage with the product weekly",
+          "opportunities": [
+            {
+              "title": "Users forget to use the product",
+              "description": "Product isn't top of mind for users' daily workflows",
+              "solutions": [
+                {
+                  "title": "Implement reminder system",
+                  "description": "Smart reminders based on user behavior patterns",
+                  "experiments": [
+                    {
+                      "title": "Test reminder timing",
+                      "description": "Compare morning vs afternoon vs evening reminders"
+                    }
+                  ]
+                },
+                {
+                  "title": "Browser extension",
+                  "description": "Add browser extension for quick access",
+                  "experiments": [
+                    {
+                      "title": "User research on extension needs",
+                      "description": "Interview power users about desired extension features"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Limited social/collaborative features",
+              "description": "Users can't easily collaborate or share with team",
+              "solutions": [
+                {
+                  "title": "Add sharing capabilities",
+                  "description": "Enable easy sharing and collaboration on content",
+                  "experiments": [
+                    {
+                      "title": "Prototype sharing UI",
+                      "description": "Build and test simple sharing interface"
+                    }
+                  ]
+                },
+                {
+                  "title": "Team workspaces",
+                  "description": "Create shared spaces for team collaboration",
+                  "experiments": [
+                    {
+                      "title": "Team pilot program",
+                      "description": "Test workspace concept with 5 teams"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Lack of fresh content/features",
+              "description": "Users get bored with same experience",
+              "solutions": [
+                {
+                  "title": "Regular feature updates",
+                  "description": "Ship new capabilities monthly",
+                  "experiments": [
+                    {
+                      "title": "Feature announcement A/B test",
+                      "description": "Test in-app vs email feature announcements"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "onboarding-template",
+      "name": "Optimize User Onboarding",
+      "description": "A template for improving the user onboarding experience",
+      "category": "onboarding",
+      "structure": {
+        "outcome": {
+          "title": "Increase Onboarding Completion Rate to 75%",
+          "description": "Improve percentage of users who complete key onboarding steps",
+          "opportunities": [
+            {
+              "title": "Onboarding is too long/complex",
+              "description": "Users abandon before completing setup",
+              "solutions": [
+                {
+                  "title": "Simplify onboarding steps",
+                  "description": "Reduce required steps from 10 to 5",
+                  "experiments": [
+                    {
+                      "title": "A/B test step count",
+                      "description": "Compare 5-step vs 10-step onboarding flow"
+                    }
+                  ]
+                },
+                {
+                  "title": "Progressive onboarding",
+                  "description": "Show features gradually over time",
+                  "experiments": [
+                    {
+                      "title": "Test progressive vs upfront",
+                      "description": "Compare gradual feature reveal vs all-at-once"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Unclear value proposition",
+              "description": "Users don't understand what they'll gain",
+              "solutions": [
+                {
+                  "title": "Add success stories",
+                  "description": "Show examples of how others succeeded",
+                  "experiments": [
+                    {
+                      "title": "Test social proof placement",
+                      "description": "Compare testimonials at start vs end of onboarding"
+                    }
+                  ]
+                },
+                {
+                  "title": "Personalized welcome message",
+                  "description": "Customize onboarding based on user role/goal",
+                  "experiments": [
+                    {
+                      "title": "User role segmentation test",
+                      "description": "Create role-specific onboarding paths"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Technical barriers to entry",
+              "description": "Setup requires too much technical knowledge",
+              "solutions": [
+                {
+                  "title": "Pre-configured templates",
+                  "description": "Ready-to-use setups for common scenarios",
+                  "experiments": [
+                    {
+                      "title": "Template usage analysis",
+                      "description": "Track which templates lead to best completion"
+                    }
+                  ]
+                },
+                {
+                  "title": "Video tutorials",
+                  "description": "Visual guides for each onboarding step",
+                  "experiments": [
+                    {
+                      "title": "Video vs text instructions",
+                      "description": "Compare completion rates with video vs text"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+

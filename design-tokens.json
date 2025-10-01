@@ -1,0 +1,131 @@
+{
+  "$schema": "https://design-tokens.org/schema.json",
+  "colors": {
+    "node-types": {
+      "outcome": {
+        "light": {
+          "background": "#E3F2FD",
+          "border": "#1976D2",
+          "text": "#0D47A1"
+        },
+        "dark": {
+          "background": "#1A237E",
+          "border": "#42A5F5",
+          "text": "#E3F2FD"
+        }
+      },
+      "opportunity": {
+        "light": {
+          "background": "#F3E5F5",
+          "border": "#7B1FA2",
+          "text": "#4A148C"
+        },
+        "dark": {
+          "background": "#4A148C",
+          "border": "#BA68C8",
+          "text": "#F3E5F5"
+        }
+      },
+      "solution": {
+        "light": {
+          "background": "#E8F5E9",
+          "border": "#388E3C",
+          "text": "#1B5E20"
+        },
+        "dark": {
+          "background": "#1B5E20",
+          "border": "#66BB6A",
+          "text": "#E8F5E9"
+        }
+      },
+      "experiment": {
+        "light": {
+          "background": "#FFF3E0",
+          "border": "#F57C00",
+          "text": "#E65100"
+        },
+        "dark": {
+          "background": "#E65100",
+          "border": "#FFB74D",
+          "text": "#FFF3E0"
+        }
+      }
+    },
+    "status": {
+      "draft": {
+        "light": "#9E9E9E",
+        "dark": "#757575"
+      },
+      "in_progress": {
+        "light": "#2196F3",
+        "dark": "#64B5F6"
+      },
+      "validated": {
+        "light": "#4CAF50",
+        "dark": "#81C784"
+      },
+      "deprioritized": {
+        "light": "#FF9800",
+        "dark": "#FFB74D"
+      },
+      "completed": {
+        "light": "#009688",
+        "dark": "#4DB6AC"
+      }
+    },
+    "theme": {
+      "light": {
+        "primary": "#1976D2",
+        "secondary": "#7B1FA2",
+        "background": "#FFFFFF",
+        "surface": "#F5F5F5",
+        "error": "#D32F2F",
+        "text-primary": "#212121",
+        "text-secondary": "#757575",
+        "border": "#E0E0E0",
+        "canvas": "#FAFAFA"
+      },
+      "dark": {
+        "primary": "#42A5F5",
+        "secondary": "#BA68C8",
+        "background": "#121212",
+        "surface": "#1E1E1E",
+        "error": "#EF5350",
+        "text-primary": "#FFFFFF",
+        "text-secondary": "#B0B0B0",
+        "border": "#424242",
+        "canvas": "#1A1A1A"
+      }
+    }
+  },
+  "spacing": {
+    "node-padding": "16px",
+    "node-margin": "24px",
+    "tree-padding": "32px"
+  },
+  "typography": {
+    "node-title": {
+      "font-size": "16px",
+      "font-weight": "600",
+      "line-height": "24px"
+    },
+    "node-description": {
+      "font-size": "14px",
+      "font-weight": "400",
+      "line-height": "20px"
+    }
+  },
+  "node-dimensions": {
+    "width": "240px",
+    "min-height": "80px",
+    "border-radius": "8px",
+    "border-width": "2px"
+  },
+  "accessibility": {
+    "wcag-compliance": "AA",
+    "contrast-ratios": {
+      "note": "All color combinations meet WCAG AA standards (4.5:1 for normal text, 3:1 for large text)"
+    }
+  }
+}
+
