@@ -1,0 +1,96 @@
+<mat-toolbar color="primary">
+  <span>Ostly - OST Editor</span>
+  
+  @if (selectedNode()) {
+    <span class="selected-node-info">
+      <mat-icon>arrow_right</mat-icon>
+      Selected: {{ selectedNode()?.title || 'Node' }}
+    </span>
+  }
+  
+  <span class="spacer"></span>
+  
+  <!-- Node Creation Buttons -->
+  <button mat-icon-button (click)="addNode('outcome')" matTooltip="Add Outcome (Blue)">
+    <mat-icon>flag</mat-icon>
+  </button>
+  
+  <button mat-icon-button (click)="addNode('opportunity')" matTooltip="Add Opportunity (Purple)">
+    <mat-icon>lightbulb</mat-icon>
+  </button>
+  
+  <button mat-icon-button (click)="addNode('solution')" matTooltip="Add Solution (Green)">
+    <mat-icon>build</mat-icon>
+  </button>
+  
+  <button mat-icon-button (click)="addNode('experiment')" matTooltip="Add Experiment (Orange)">
+    <mat-icon>science</mat-icon>
+  </button>
+  
+  <span class="divider"></span>
+  
+  <!-- Zoom Controls -->
+  <button mat-icon-button (click)="zoomIn()" matTooltip="Zoom In (Ctrl/Cmd + Scroll)">
+    <mat-icon>zoom_in</mat-icon>
+  </button>
+  
+  <button mat-icon-button (click)="zoomOut()" matTooltip="Zoom Out">
+    <mat-icon>zoom_out</mat-icon>
+  </button>
+  
+  <button mat-icon-button (click)="zoomToFit()" matTooltip="Fit to Screen">
+    <mat-icon>fit_screen</mat-icon>
+  </button>
+  
+  <button mat-icon-button (click)="centerContent()" matTooltip="Center Content">
+    <mat-icon>center_focus_strong</mat-icon>
+  </button>
+  
+  <span class="divider"></span>
+  
+  <!-- Auto-Layout -->
+  <button mat-icon-button (click)="autoLayout()" matTooltip="Auto-Layout Tree">
+    <mat-icon>account_tree</mat-icon>
+  </button>
+  
+  <span class="divider"></span>
+  
+  <!-- Undo/Redo Controls -->
+  <button mat-icon-button (click)="undo()" [disabled]="!canUndo()" matTooltip="Undo (Ctrl+Z)">
+    <mat-icon>undo</mat-icon>
+  </button>
+  
+  <button mat-icon-button (click)="redo()" [disabled]="!canRedo()" matTooltip="Redo (Ctrl+Y)">
+    <mat-icon>redo</mat-icon>
+  </button>
+  
+  <span class="divider"></span>
+  
+  <!-- Export Controls -->
+  <button mat-icon-button (click)="exportToPNG()" matTooltip="Export as PNG">
+    <mat-icon>image</mat-icon>
+  </button>
+  
+  <button mat-icon-button (click)="exportToPDF()" matTooltip="Export as PDF">
+    <mat-icon>picture_as_pdf</mat-icon>
+  </button>
+  
+  <span class="spacer"></span>
+  
+  <!-- Theme Toggle -->
+  <button mat-icon-button (click)="toggleTheme()" matTooltip="Toggle Dark/Light Mode">
+    <mat-icon>brightness_6</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="editor-container">
+  <!-- Graph container is always present so AntV X6 can initialize -->
+  <div #graphContainer class="graph-container"></div>
+  
+  <!-- Loading overlay -->
+  @if (loading()) {
+    <div class="loading-overlay">
+      <div class="loading">Loading...</div>
+    </div>
+  }
+</div>

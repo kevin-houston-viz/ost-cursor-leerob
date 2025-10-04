@@ -6,11 +6,13 @@
 // custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
 
+// Light theme configuration
 html {
   @include mat.theme((
     color: (
-      primary: mat.$azure-palette,
-      tertiary: mat.$blue-palette,
+      primary: mat.$cyan-palette,
+      tertiary: mat.$violet-palette,
+      theme-type: light,
     ),
     typography: Roboto,
     density: 0,
@@ -21,27 +23,35 @@ body {
   // Support both light and dark themes
   color-scheme: light dark;
 
-  // Set a default background, font and text colors for the application using
-  // Angular Material's system-level CSS variables. Learn more about these
-  // variables at https://material.angular.dev/guide/system-variables
-  background-color: var(--mat-sys-surface);
-  color: var(--mat-sys-on-surface);
-  font: var(--mat-sys-body-medium);
+  // Light mode colors - bright and clean
+  background-color: #ffffff;
+  color: #1f2937; // Dark gray text for readability
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
 
-  // Reset the user agent margin.
+  // Reset the user agent margin
   margin: 0;
 }
 
-// Dark mode overrides
-.dark {
+// Dark mode overrides - Material + Custom
+html.dark {
   color-scheme: dark;
+  
+  @include mat.theme((
+    color: (
+      primary: mat.$cyan-palette,
+      tertiary: mat.$violet-palette,
+      theme-type: dark,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
 
   body {
-    background-color: #121212;
-    color: #ffffff;
+    background-color: #0f172a; // Slate 900 - softer than pure black
+    color: #f1f5f9; // Slate 100 - softer than pure white
   }
 }
-/* Tailwind CSS */
+/* Tailwind CSS v3 */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -55,4 +65,37 @@ body {
 body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+/* Fix Material Dialog scrollbar issues */
+.mat-mdc-dialog-surface {
+  overflow: visible !important;
+}
+
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  overflow-y: visible !important;
+}
+
+/* Fix Material form field outline appearance - remove extra vertical lines */
+.mat-mdc-form-field-subscript-wrapper {
+  margin-bottom: 0;
+}
+
+/* Ensure form fields have proper spacing without double borders */
+.mat-mdc-text-field-wrapper {
+  padding: 0;
+}
+
+.mdc-notched-outline .mdc-notched-outline__leading {
+  border-right: none !important;
+  width: 12px;
+}
+
+.mdc-notched-outline .mdc-notched-outline__notch {
+  border-left: none !important;
+  border-right: none !important;
+}
+
+.mdc-notched-outline .mdc-notched-outline__trailing {
+  border-left: none !important;
 }

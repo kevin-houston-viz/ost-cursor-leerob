@@ -1,0 +1,14 @@
+node_modules
+.angular
+.vscode
+*.log
+.env
+.env.local
+e2e
+coverage
+*.spec.ts
+playwright-report
+test-results
+
+
+

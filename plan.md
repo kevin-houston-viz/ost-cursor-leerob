@@ -315,19 +315,19 @@ This plan breaks down the Ostly product brief into iterative development phases,
 
 ## Next Immediate Steps
 
-### Week 1-2: Foundation Setup
-- [ ] Set up development environment (Node.js, Angular 20, PostgreSQL)
-- [ ] Create basic project structure (frontend + backend repos)
-- [ ] Configure Git repository with descriptive commit message templates
-- [ ] Set up PostgreSQL in Docker container
-- [ ] Configure ESLint 9 + Prettier for code quality
-- [ ] Set up unit testing framework with code coverage reporting
-- [ ] Configure Playwright for E2E testing
-- [ ] Set up automatic deployments (Vercel for frontend, Railway/Render for backend)
-- [ ] Create initial database schema
-- [ ] Configure environment variables
-- [ ] Set up Material + Tailwind CSS v4
-- [ ] Configure Dark/Light mode theming
+### Week 1-2: Foundation Setup ✅ COMPLETE
+- [x] Set up development environment (Node.js, Angular 20, PostgreSQL)
+- [x] Create basic project structure (frontend + backend repos)
+- [x] Configure Git repository with descriptive commit message templates
+- [x] Set up PostgreSQL in Docker container
+- [x] Configure ESLint 9 + Prettier for code quality
+- [x] Set up unit testing framework with code coverage reporting
+- [x] Configure Playwright for E2E testing
+- [x] Set up automatic deployments (Vercel for frontend, Railway/Render for backend)
+- [x] Create initial database schema
+- [x] Configure environment variables
+- [x] Set up Material + Tailwind CSS v3 (v4 not used due to compatibility)
+- [x] Configure Dark/Light mode theming
 
 **Development Covenants**:
 - Follow Red/Green/Refactor TDD pattern for all business logic
@@ -337,11 +337,17 @@ This plan breaks down the Ostly product brief into iterative development phases,
 
 **Note on CI/CD**: For a single developer, use platform auto-deploy (Vercel/Railway) instead of complex CI/CD pipelines. This gives you automatic deployments on git push with zero configuration.
 
-### Week 3-4: Core Editor
-- [ ] Implement basic node creation/editing
-- [ ] Add drag-and-drop functionality
-- [ ] Create simple layout algorithm
-- [ ] Add basic styling and theming
+### Week 3-4: Core Editor ✅ COMPLETE
+- [x] Implement basic node creation/editing
+- [x] Add drag-and-drop functionality
+- [x] Create simple layout algorithm
+- [x] Add basic styling and theming
+- [x] Implement parent-child connections
+- [x] Fix node type visual updates
+- [x] Use right-angle (Manhattan) connectors only
+- [x] Implement node deletion
+- [x] Enforce OST hierarchy rules (Outcome→Opportunity→Solution→Experiment)
+- [x] Fix panning functionality
 
 ### Week 5-6: Collaboration
 - [ ] Implement real-time editing

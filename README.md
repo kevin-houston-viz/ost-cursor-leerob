@@ -149,9 +149,25 @@ npm run test:e2e
 
 ## 🚀 Deployment
 
+The application is configured for automatic deployment:
+
 - **Frontend**: Vercel (auto-deploy from main branch)
-- **Backend**: Railway or Render (auto-deploy from main branch)
-- **Database**: Railway/Render hosted PostgreSQL (production)
+- **Backend**: Railway (auto-deploy from main branch)
+- **Database**: Railway PostgreSQL (production)
+
+### Quick Deploy
+
+```bash
+# Frontend
+cd frontend
+vercel --prod
+
+# Backend
+cd backend
+railway up
+```
+
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for complete deployment guide and [DEPLOYMENT-CHECKLIST.md](./DEPLOYMENT-CHECKLIST.md) for step-by-step instructions.
 
 ## 📚 Resources
 

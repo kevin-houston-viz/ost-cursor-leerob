@@ -1,0 +1,43 @@
+:host {
+  display: block;
+}
+
+mat-dialog-content {
+  min-width: 500px;
+  padding: 20px 24px;
+  overflow-y: auto !important;
+  max-height: 60vh;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+mat-dialog-actions {
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.delete-button {
+  mat-icon {
+    margin-right: 8px;
+  }
+}
+
+// Style for read-only fields
+input[readonly] {
+  cursor: default;
+  background-color: rgba(0, 0, 0, 0.04);
+  
+  html.dark & {
+    background-color: rgba(255, 255, 255, 0.04);
+  }
+}
+
