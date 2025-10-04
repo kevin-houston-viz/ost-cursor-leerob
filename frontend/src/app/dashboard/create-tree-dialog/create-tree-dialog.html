@@ -1,0 +1,58 @@
+<h2 mat-dialog-title>Create New OST</h2>
+
+<form [formGroup]="treeForm" (ngSubmit)="onCreate()">
+  <mat-dialog-content>
+    <!-- Title -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Title</mat-label>
+      <input 
+        matInput 
+        formControlName="title" 
+        placeholder="e.g., Increase User Retention" 
+        required 
+        autofocus
+      />
+      @if (treeForm.get('title')?.hasError('required')) {
+        <mat-error>Title is required</mat-error>
+      }
+      @if (treeForm.get('title')?.hasError('maxlength')) {
+        <mat-error>Title must be less than 255 characters</mat-error>
+      }
+    </mat-form-field>
+
+    <!-- Description -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Description (optional)</mat-label>
+      <textarea 
+        matInput 
+        formControlName="description" 
+        placeholder="Brief description of this OST"
+        rows="3"
+      ></textarea>
+      @if (treeForm.get('description')?.hasError('maxlength')) {
+        <mat-error>Description must be less than 1000 characters</mat-error>
+      }
+    </mat-form-field>
+
+    @if (error) {
+      <div class="error-message">
+        {{ error }}
+      </div>
+    }
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-button type="button" (click)="onCancel()" [disabled]="creating">
+      Cancel
+    </button>
+    <button 
+      mat-raised-button 
+      color="primary" 
+      type="submit"
+      [disabled]="!treeForm.valid || creating"
+    >
+      {{ creating ? 'Creating...' : 'Create OST' }}
+    </button>
+  </mat-dialog-actions>
+</form>
+

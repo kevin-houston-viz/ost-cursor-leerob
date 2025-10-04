@@ -23,6 +23,9 @@ export class GraphService {
   private blankClickSource = new Subject<void>();
   blankClick$ = this.blankClickSource.asObservable();
   
+  private nodeMovedSource = new Subject<{ nodeId: string; position: { x: number; y: number } }>();
+  nodeMoved$ = this.nodeMovedSource.asObservable();
+  
   private selectedNodeId: string | null = null;
 
   initGraph(container: HTMLElement): Graph {
@@ -101,7 +104,12 @@ export class GraphService {
 
     // Node moved - update position
     this.graph.on('node:moved', ({ node }) => {
-      // Future: Emit event for position update to backend
+      const nodeData = node.getData() as Node;
+      const position = node.getPosition();
+      this.nodeMovedSource.next({
+        nodeId: nodeData.id,
+        position: { x: position.x, y: position.y }
+      });
     });
 
     // Node double-click for editing
@@ -153,10 +161,10 @@ export class GraphService {
 
     this.graph.addNode({
       id: node.id,
-      x: node.position_x || 100,
-      y: node.position_y || 100,
-      width: 280,
-      height: 100,
+      x: node.position_x !== undefined && node.position_x !== null ? Number(node.position_x) : 100,
+      y: node.position_y !== undefined && node.position_y !== null ? Number(node.position_y) : 100,
+      width: 320,
+      height: 140,
       shape: 'rect',
       markup,
       attrs: {
@@ -169,7 +177,7 @@ export class GraphService {
           cursor: 'move',
         },
         label: {
-          text: this.truncateText(node.title, 35),
+          text: this.wrapText(node.title, 32), // ~32 chars per line for 290px width
           fill: nodeColors.text,
           fontSize: 14,
           fontWeight: 600,
@@ -184,18 +192,18 @@ export class GraphService {
           fontSize: 10,
           fontWeight: 500,
           textAnchor: 'start',
-          textVerticalAnchor: 'top',
+          textVerticalAnchor: 'bottom',
           refX: 15,
-          refY: 75,
+          refY: -10,
         },
         status: {
           text: `${statusIcon} ${node.status.replace('_', ' ')}`,
           fill: nodeColors.text,
           fontSize: 10,
           textAnchor: 'end',
-          textVerticalAnchor: 'top',
+          textVerticalAnchor: 'bottom',
           refX: '95%',
-          refY: 75,
+          refY: -10,
           opacity: 0.8,
         },
       },
@@ -203,8 +211,30 @@ export class GraphService {
     });
   }
 
-  private truncateText(text: string, maxLength: number): string {
-    return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
+
+  private wrapText(text: string, maxCharsPerLine: number): string {
+    const words = text.split(' ');
+    const lines: string[] = [];
+    let currentLine = '';
+
+    words.forEach(word => {
+      const testLine = currentLine ? `${currentLine} ${word}` : word;
+      
+      if (testLine.length <= maxCharsPerLine) {
+        currentLine = testLine;
+      } else {
+        if (currentLine) {
+          lines.push(currentLine);
+        }
+        currentLine = word;
+      }
+    });
+
+    if (currentLine) {
+      lines.push(currentLine);
+    }
+
+    return lines.join('\n');
   }
 
   private getStatusIcon(status: NodeStatus): string {
@@ -416,7 +446,7 @@ export class GraphService {
         strokeWidth: 3,
       },
       label: {
-        text: this.truncateText(updatedNode.title, 35),
+        text: this.wrapText(updatedNode.title, 32),
         fill: nodeColors.text,
       },
       type: {
@@ -539,6 +569,16 @@ export class GraphService {
     rootNodes.forEach((root, index) => {
       const width = layoutNode(root, currentX, START_Y, index, rootNodes.length);
       currentX += width * HORIZONTAL_SPACING + 100; // Extra spacing between trees
+    });
+
+    // Emit position updates for all nodes so they get saved to the database
+    nodes.forEach(node => {
+      const data = node.getData() as Node;
+      const position = node.getPosition();
+      this.nodeMovedSource.next({
+        nodeId: data.id,
+        position: { x: position.x, y: position.y }
+      });
     });
 
     // Center the result

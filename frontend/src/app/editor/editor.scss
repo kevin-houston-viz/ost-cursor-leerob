@@ -2,6 +2,12 @@
   flex: 1 1 auto;
 }
 
+.toolbar-title {
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 8px;
+}
+
 .selected-node-info {
   display: flex;
   align-items: center;

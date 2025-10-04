@@ -1,0 +1,40 @@
+:host {
+  display: block;
+}
+
+mat-dialog-content {
+  min-width: 450px;
+  padding: 20px 24px;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+mat-dialog-actions {
+  padding: 16px 24px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+
+  html.dark & {
+    border-top-color: rgba(255, 255, 255, 0.12);
+  }
+}
+
+.error-message {
+  padding: 12px;
+  margin-bottom: 16px;
+  background-color: #ffebee;
+  color: #c62828;
+  border-radius: 4px;
+  font-size: 0.9rem;
+
+  html.dark & {
+    background-color: #b71c1c;
+    color: #ffcdd2;
+  }
+}
+

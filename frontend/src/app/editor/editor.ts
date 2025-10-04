@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, ElementRef, ViewChild, inject, signal, NgZone } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { MatButtonModule } from '@angular/material/button';
@@ -42,6 +42,7 @@ export class Editor implements OnInit, AfterViewInit, OnDestroy {
   private themeService = inject(ThemeService);
   private commandHistory = inject(CommandHistoryService);
   private route = inject(ActivatedRoute);
+  private router = inject(Router);
   private dialog = inject(MatDialog);
   private ngZone = inject(NgZone);
 
@@ -108,15 +109,22 @@ export class Editor implements OnInit, AfterViewInit, OnDestroy {
         });
       });
       this.subscriptions.push(redoSub);
+
+      // Subscribe to node moved events to persist position
+      const movedSub = this.graphService.nodeMoved$.subscribe(({ nodeId, position }) => {
+        this.updateNodePosition(nodeId, position.x, position.y);
+      });
+      this.subscriptions.push(movedSub);
       
-      // Now that graph is ready, load or create tree
+      // Now that graph is ready, load tree
       const id = this.treeId();
       if (id) {
         // Load existing tree from route
         this.loadTree(id);
       } else {
-        // Create a new demo tree
-        this.createDemoTree();
+        // No tree ID provided, redirect to dashboard
+        console.warn('No tree ID provided, redirecting to dashboard');
+        this.router.navigate(['/dashboard']);
       }
     }
   }
@@ -340,12 +348,8 @@ export class Editor implements OnInit, AfterViewInit, OnDestroy {
 
     // Execute command (supports undo/redo)
     this.commandHistory.executeCommand(command).then(() => {
-      // Auto-layout to ensure professional tree arrangement
+      // Center on the new node after creation
       setTimeout(() => {
-        if (parentId) {
-          // Only auto-layout when adding child nodes (not root nodes)
-          this.graphService.autoLayout();
-        }
         this.graphService.centerContent();
       }, 50);
     }).catch((error) => {
@@ -357,6 +361,10 @@ export class Editor implements OnInit, AfterViewInit, OnDestroy {
   toggleTheme(): void {
     this.themeService.toggleTheme();
     this.graphService.updateTheme();
+  }
+
+  backToDashboard(): void {
+    this.router.navigate(['/dashboard']);
   }
 
   // Undo/Redo controls
@@ -504,6 +512,24 @@ export class Editor implements OnInit, AfterViewInit, OnDestroy {
     const tree = this.tree();
     if (!tree) return [];
     return tree.nodes.filter(n => n.parent_id === nodeId);
+  }
+
+  private updateNodePosition(nodeId: string, x: number, y: number): void {
+    const treeId = this.treeId();
+    if (!treeId) return;
+
+    // Update in API (may be called frequently during dragging)
+    this.apiService.updateNode(treeId, nodeId, {
+      position_x: x,
+      position_y: y
+    }).subscribe({
+      next: () => {
+        // Position updated successfully
+      },
+      error: (error) => {
+        console.error('Failed to update node position:', error);
+      }
+    });
   }
 
   // Delete node via API and remove from graph

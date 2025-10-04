@@ -1,5 +1,8 @@
 <mat-toolbar color="primary">
-  <span>Ostly - OST Editor</span>
+  <button mat-icon-button (click)="backToDashboard()" matTooltip="Back to Dashboard">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <span class="toolbar-title">{{ tree()?.title || 'OST Editor' }}</span>
   
   @if (selectedNode()) {
     <span class="selected-node-info">
